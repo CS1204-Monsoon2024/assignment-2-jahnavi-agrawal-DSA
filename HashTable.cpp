@@ -21,7 +21,7 @@ class HashTable {
             int position = probeForInsert(value);
             
             if (position == -1) {
-                cout << "Max probing limit reached!" << endl;
+                cout << "Probing limit exceeded!" << endl;
                 return;
             } else if (position == -2) {
                 cout << "Duplicate key insertion is not allowed" << endl;
@@ -37,7 +37,7 @@ class HashTable {
             int position = probeForSearch(value);
             
             if (position == -1) {
-                cout << "Element not found!" << endl;
+                cout << "Element not found" << endl;
                 return;
             }
             
@@ -47,14 +47,18 @@ class HashTable {
 
         // Function to search for an element in the hash table
         int search(int value) {
-            return probeForSearch(value);  // Return the position or -1 if not found
+            int position = probeForSearch(value);
+            if (position == -1) {
+                cout << "Element not found" << endl;
+            }
+            return position;
         }
 
         // Function to print the hash table
         void printTable() {
             for (const auto& entry : hashTable) {
                 if (entry == -1) {
-                    cout << "-";
+                    cout << "- ";
                 } else {
                     cout << entry << " ";
                 }
