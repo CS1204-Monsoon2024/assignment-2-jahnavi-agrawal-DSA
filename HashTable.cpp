@@ -21,10 +21,10 @@ class HashTable {
             int position = probeForInsert(value);
             
             if (position == -1) {
-                cout << "Probing limit exceeded!" << endl;
+                cout << "Max probing limit reached!" << endl;
                 return;
             } else if (position == -2) {
-                cout << "Duplicate key not allowed!" << endl;
+                cout << "Duplicate key insertion is not allowed" << endl;
                 return;
             }
 
@@ -54,7 +54,7 @@ class HashTable {
         void printTable() {
             for (const auto& entry : hashTable) {
                 if (entry == -1) {
-                    cout << "- ";
+                    cout << "-";
                 } else {
                     cout << entry << " ";
                 }
