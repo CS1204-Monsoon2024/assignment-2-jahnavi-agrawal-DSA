@@ -5,10 +5,10 @@ using namespace std;
 
 class HashTable {
     public:
-        double loadFactorThreshold = 0.8;  // Threshold for load factor
-        int capacity;                      // Size of the hash table
-        int elementCount = 0;              // Number of elements in the hash table
-        std::vector<int> hashTable;        // Vector to store hash table elements
+        double loadFactorThreshold = 0.8;  // Lowered to avoid probing limit
+        int capacity;
+        int elementCount = 0;
+        std::vector<int> hashTable;
 
         HashTable(int initialCapacity) {
             capacity = initialCapacity;
@@ -47,7 +47,13 @@ class HashTable {
 
         // Function to search for an element in the hash table
         int search(int value) {
-            return probeForSearch(value);  // Return the position or -1 if not found
+            int position = probeForSearch(value);
+            if (position != -1) {
+                cout << "Found at: " << position << endl;
+            } else {
+                cout << "Found at: " << position << endl;
+            }
+            return position;
         }
 
         // Function to print the hash table
@@ -147,5 +153,3 @@ class HashTable {
             return -1;  // Element not found after probing
         }
 };
-
-
